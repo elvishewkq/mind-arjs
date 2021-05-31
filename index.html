@@ -221,14 +221,14 @@
     <div class="container">
         <div id="scanning-overlay" class="hidden">
             <div class="inner">
-                <img src="./assets/softmind/mindar_card.png"/>
+                <img src="./assets/targets/mindar_card.png"/>
                 <div class="scanline"></div>
             </div>
         </div>
 
-        <a-scene mindar="imageTargetSrc: ./assets/softmind/mindar_card.mind; showStats: false; uiScanning: #scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-scene mindar="imageTargetSrc: ./assets/targets/mindar_card.mind; showStats: false; uiScanning: #scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
             <a-assets>
-              <img id="card" src="./assets/softmind/mindar_card.png" />
+              <img id="card" src="./assets/targets/mindar_card.png" />
               <img id="icon-web" src="./assets/icons/web.png" />
               <img id="icon-location" src="./assets/icons/location.png" />
               <img id="icon-profile" src="./assets/icons/profile.png" />
@@ -243,7 +243,7 @@
               <img id="coffeemachine-preview" src="./assets/images/coffeemachine-preview.png" />
               <img id="peak-preview" src="./assets/images/peak-preview.png" />
               
-              <a-asset-item id="avatarModel" src="./assets/softmind/3Dmindar/scene.gltf"></a-asset-item>
+              <a-asset-item id="avatarModel" src="./assets/3Dmodels/3Dmindar/scene.gltf"></a-asset-item>
             </a-assets>
     
             <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable">
@@ -298,10 +298,10 @@
 
   <!-- Multi-Target -->
   <!-- <body>
-    <a-scene mindar="maxTrack: 2; imageTargetSrc: ./assets/band/band.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene mindar="maxTrack: 2; imageTargetSrc: ./assets/targets/band.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
-        <a-asset-item id="bearModel" src="assets/band/bear/scene.gltf"></a-asset-item>
-        <a-asset-item id="raccoonModel" src="assets/band/raccoon/scene.gltf"></a-asset-item>
+        <a-asset-item id="bearModel" src="assets/3Dmodels/bear/scene.gltf"></a-asset-item>
+        <a-asset-item id="raccoonModel" src="assets/3Dmodels/raccoon/scene.gltf"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
