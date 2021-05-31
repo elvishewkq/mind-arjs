@@ -2,14 +2,89 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.2/dist/mindar.prod.js"></script>
+
+    <style>
+        #scanning-overlay {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: transparent;
+            z-index: 2;
+        }
+        @media (min-aspect-ratio: 1/1) {
+            #scanning-overlay .inner {
+                width: 50vh;
+                height: 50vh;
+            }
+        }
+        @media (max-aspect-ratio: 1/1) {
+            #scanning-overlay .inner {
+                width: 80vw;
+                height: 80vw;
+            }
+        }
+  
+        #scanning-overlay .inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        
+            background:
+                linear-gradient(to right, white 10px, transparent 10px) 0 0,
+                linear-gradient(to right, white 10px, transparent 10px) 0 100%,
+                linear-gradient(to left, white 10px, transparent 10px) 100% 0,
+                linear-gradient(to left, white 10px, transparent 10px) 100% 100%,
+                linear-gradient(to bottom, white 10px, transparent 10px) 0 0,
+                linear-gradient(to bottom, white 10px, transparent 10px) 100% 0,
+                linear-gradient(to top, white 10px, transparent 10px) 0 100%,
+                linear-gradient(to top, white 10px, transparent 10px) 100% 100%;
+            background-repeat: no-repeat;
+            background-size: 40px 40px;
+        }
+  
+        #scanning-overlay.hidden {
+            display: none;
+        }
+  
+        #scanning-overlay img {
+            opacity: 0.6;
+            width: 90%;
+            align-self: center;
+        }
+  
+        #scanning-overlay .inner .scanline {
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: white;
+            animation: move 2s linear infinite;
+        }
+        @keyframes move {
+            0%, 100% { top: 0% }
+            50% { top: calc(100% - 10px) }
+        }
+    </style>    
   </head>
   
   <!-- Single-Target -->
-  <!-- <body>
-    <a-scene mindar="imageTargetSrc: ./assets/mindar_card.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+  <body>
+    <div id="scanning-overlay" class="hidden">
+        <div class="inner">
+            <img src="./assets/softmind/mindar_card.png"/>
+            <div class="scanline"></div>
+        </div>
+    </div>
+
+    <a-scene mindar="uiScanning: #scanning-overlay; imageTargetSrc: ./assets/softmind/mindar_card.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
-        <img id="card" src="assets/mindar_card.png" />
-        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/examples/assets/card-example/softmind/scene.gltf"></a-asset-item>
+        <img id="card" src="assets/softmind/mindar_card.png" />
+        <a-asset-item id="avatarModel" src="assets/softmind/3Dmindar/scene.gltf"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -19,14 +94,14 @@
         <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
       </a-entity>
     </a-scene>
-  </body> -->
+  </body>
 
   <!-- Multi-Target -->
-  <body>
-    <a-scene mindar="imageTargetSrc: ./assets/band/band.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+  <!-- <body>
+    <a-scene mindar="maxTrack: 2; imageTargetSrc: ./assets/band/band.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
-    <a-asset-item id="bearModel" src="assets/band/bear/scene.gltf"></a-asset-item>
-    <a-asset-item id="raccoonModel" src="assets/band/raccoon/scene.gltf"></a-asset-item>
+        <a-asset-item id="bearModel" src="assets/band/bear/scene.gltf"></a-asset-item>
+        <a-asset-item id="raccoonModel" src="assets/band/raccoon/scene.gltf"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -38,6 +113,6 @@
         <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#raccoonModel" animation-mixer>
       </a-entity>
     </a-scene>
-  </body>
+  </body> -->
 
 </html>
